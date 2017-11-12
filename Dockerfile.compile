@@ -1,0 +1,12 @@
+FROM fedora:26
+
+ENV PATH "/root/.cargo/bin:$PATH"
+
+RUN dnf install -y gcc curl
+RUN mkdir /root/.cargo \
+ && curl https://sh.rustup.rs -s > /root/install.sh \
+ && chmod +x /root/install.sh \
+ && sh /root/install.sh -y --verbose --default-toolchain nightly \
+ && rustup target add x86_64-unknown-linux-musl \
+    --toolchain nightly-x86_64-unknown-linux-gnu \
+ && echo -e '[build]\ntarget = "x86_64-unknown-linux-musl"' > /root/.cargo/config

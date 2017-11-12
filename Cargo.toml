@@ -4,3 +4,10 @@ version = "0.1.0"
 authors = ["Alejandro Martinez Ruiz <amr@redhat.com>"]
 
 [dependencies]
+tokio-minihttp = { path = "tokio-minihttp" }
+futures = "*"
+tokio-proto = "*"
+tokio-service = "*"
+num_cpus = "*"
+
+[workspace]
